@@ -1,25 +1,25 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('title', 'Products')
 
 @section('content')
 @if(session()->get('success'))
-<div class="alert alert-success">
- 
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div><br />
+<div class="alert alert-success alert-block">
+	<button type="button" class="close" data-dismiss="alert">×</button>	
+        <strong>{{ session('success') }}</strong>
+</div>
 @endif
-<table class="table table-striped">
-  <thead>
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead class="thead-dark">
     <tr>
-      <td>Id</td>
-      <td>Nome</td>
-      <td>Descrição</td>
-      <td>Preço</td>
-      <td>Tipo</td>
-      <td colspan="2">Action</td>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Preço (R$)</th>
+      <th>Tipo</th>
+      <th>Action</th>
+      <th colspan="2"><a href="{{ route('products.create') }}" class="btn btn-primary" role="button">Create Product</a></th>
     </tr>
   </thead>
   <tbody>
@@ -30,10 +30,9 @@
       <td>{{$product->descricao}}</td>
       <td>{{$product->preco}}</td>
       <td>{{$product->tipo}}</td>
-      <td><a href="{{ route('products.create', $product->id) }}" class="btn btn-primary" role="button">Create Product</a></td>
-      <td><a href="{{ route('products.index', $product->id) }}" class="btn btn-primary" role="button">Show Product</a></td>
+      <td><a href="{{ route('products.show', $product->id) }}" class="btn btn-primary" role="button">Show Product</a></td>
       <td><a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary" role="button">Edit</a></td>
-      <td>
+      <td colspan="2">
         <form action="{{ route('products.destroy', $product->id)}}" method="post">
           @csrf
           @method('DELETE')
@@ -44,5 +43,6 @@
     @endforeach
   </tbody>
 </table>
+</div>
 <!-- <a href="{{ route('products.create') }}" class="btn btn-primary" role="button">Add Product</a> -->
 @endsection

@@ -1,16 +1,17 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('title', 'Product')
 
 @section('content')
-<table class="table table-striped">
-  <thead>
+<div class="table-responsive">
+<table class="table table-sm table-hover">
+  <thead class="thead-dark">
     <tr>
-      <td>ID</td>
-      <td>Nome</td>
-      <td>Descrição</td>
-      <td>Preço</td>
-      <td>Tipo</td>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Preço</th>
+      <th>Tipo</th>
     </tr>
   </thead>
   <tbody>
@@ -23,5 +24,6 @@
       </tr>
   </tbody>
 </table>
+</div>
 
 @endsection

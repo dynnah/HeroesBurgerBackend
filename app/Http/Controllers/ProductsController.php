@@ -44,7 +44,7 @@ class ProductsController extends Controller
         ]);
         // dd($validatedData);
         Product::create($validatedData);
-        return redirect(route('products.index'))->with('success', 'Product is successfully saved');
+        return redirect(route('products.index'))->with('success', 'Product is successfully saved!');
     }
 
     /**
@@ -86,7 +86,7 @@ class ProductsController extends Controller
             ]);
             
         $product->update($validatedData);
-        return redirect(route('products.index'))->with('success', 'Product is successfully saved');
+        return redirect(route('products.index'))->with('success', 'Product is successfully updated!');
     }
 
     /**
@@ -99,6 +99,6 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($product->id);
         $product->delete();
-        return redirect(route('products.index'))->with('success', 'Product is successfully deleted');
+        return redirect(route('products.index'))->with('success', 'Product is successfully deleted!');
     }
 }

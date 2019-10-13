@@ -12,6 +12,8 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        Product::truncate();
+
         $products = new Product;
         $products->nome = 'TONY - Ancho Burger';
         $products->descricao = 'Pão de batata artesanal, dois blends de carnes de costela (180g cada), geleia de bacon, queijo prato, picles e molho especial HEROES.';
